@@ -36,5 +36,5 @@ jobs:
           path: app/build/outputs/apk/debug/
           destination: artifact-file
       - run:
-          name: Add local.properties
-          command: echo "sdk.dir=$ANDROID_HOME" > local.properties
+          name: Delete local.properties
+          command: rm local.properties
