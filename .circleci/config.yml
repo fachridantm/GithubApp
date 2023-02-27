@@ -23,6 +23,12 @@ jobs:
           name: Add GITHUB_TOKEN to local.properties
           command: echo ${GITHUB_TOKEN} >> local.properties
       - run:
+          name: Check BASE_URL value
+          command: echo ${BASE_URL}
+      -run:
+          name: Check GITHUB_TOKEN value
+          command: echo ${GITHUB_TOKEN}
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
