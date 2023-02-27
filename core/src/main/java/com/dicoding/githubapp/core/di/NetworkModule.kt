@@ -1,6 +1,8 @@
 package com.dicoding.githubapp.core.di
 
 import com.dicoding.githubapp.core.BuildConfig
+import com.dicoding.githubapp.core.BuildConfig.BASE_URL
+import com.dicoding.githubapp.core.BuildConfig.GITHUB_TOKEN
 import com.dicoding.githubapp.core.data.source.remote.network.MainApiService
 import dagger.Module
 import dagger.Provides
@@ -29,7 +31,7 @@ class NetworkModule {
             )
             .addInterceptor { chain ->
                 chain.request().newBuilder()
-                    .addHeader("Authorization","token ${BuildConfig.GITHUB_TOKEN}")
+                    .addHeader("Authorization","token $GITHUB_TOKEN")
                     .build()
                     .let(chain::proceed)
             }
@@ -42,7 +44,7 @@ class NetworkModule {
     @Provides
     fun provideMainApiService(client: OkHttpClient): MainApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BASE_URL)
             .client(client)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
