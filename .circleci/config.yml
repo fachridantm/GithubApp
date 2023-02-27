@@ -17,6 +17,12 @@ jobs:
           name: Create local.properties
           command: touch local.properties
       - run:
+          name: Add BASE_URL to local.properties
+          command: echo ${BASE_URL} >> local.properties
+      - run:
+          name: Add GITHUB_TOKEN to local.properties
+          command: echo ${GITHUB_TOKEN} >> local.properties
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
