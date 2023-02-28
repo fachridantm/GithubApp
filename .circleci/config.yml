@@ -18,16 +18,10 @@ jobs:
           command: touch local.properties
       - run:
           name: Add BASE_URL to local.properties
-          command: echo ${BASE_URL} >> local.properties
+          command: echo "BASE_URL=${BASE_URL}" >> local.properties
       - run:
           name: Add GITHUB_TOKEN to local.properties
-          command: echo ${GITHUB_TOKEN} >> local.properties
-      - run:
-          name: Check BASE_URL value
-          command: echo ${BASE_URL}
-      - run:
-          name: Check GITHUB_TOKEN value
-          command: echo ${GITHUB_TOKEN}
+          command: echo "GITHUB_TOKEN=${GITHUB_TOKEN}" >> local.properties
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
