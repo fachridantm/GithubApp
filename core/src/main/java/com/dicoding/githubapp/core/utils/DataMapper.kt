@@ -47,7 +47,7 @@ object DataMapper {
             followers = 0,
             following = 0,
             isFavorited = it.isFavorited,
-            url = "",
+            url = it.url,
             followingUrl = "",
             followersUrl = ""
         )
@@ -56,6 +56,7 @@ object DataMapper {
     fun usertoUserEntity(user: User) = UserEntity(
         username = user.username,
         avatar = user.avatar,
+        url = user.url,
         isFavorited = user.isFavorited
     )
 }
