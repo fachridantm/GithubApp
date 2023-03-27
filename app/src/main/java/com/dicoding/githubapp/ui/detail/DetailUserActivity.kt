@@ -156,20 +156,13 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     private fun setupFavorite() {
-        if (detailUserViewModel.hasFavorite.value == false) { detailUserViewModel.setFavorite(user) }
-
-        detailUserViewModel.user.observe(this) { user ->
-            detailUserViewModel.isFavorite.observe(this) { isFavorite ->
-                if (isFavorite) {
-                    setFavoriteIcon(true)
-                } else {
-                    setFavoriteIcon(false)
-                }
-                detailBinding.fabFav.setOnClickListener {
-                    detailUserViewModel.setFavoriteUsers(user, !isFavorite, this)
-                }
+        detailUserViewModel.getFavoritedUsers().observe(this) { users ->
+            val isFavorite = users.any { it.username == user.username }
+            setFavoriteIcon(isFavorite)
+            detailBinding.fabFav.setOnClickListener {
+                detailUserViewModel.setFavoriteUsers(user, !isFavorite, this)
+                detailUserViewModel.toast.observe(this, ::showToast)
             }
-            detailUserViewModel.toast.observe(this, ::showToast)
         }
     }
 
