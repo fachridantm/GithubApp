@@ -17,10 +17,10 @@
             android:id="@+id/iv_item_avatar"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:background="#DDDDDD"
             android:contentDescription="@string/user_avatar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_item_username"
@@ -28,6 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="18dp"
+            android:background="#DDDDDD"
             app:layout_constraintBottom_toBottomOf="@id/iv_item_avatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_item_avatar"

@@ -151,7 +151,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        homeBinding.pbMain.visibility = if (isLoading) View.VISIBLE else View.GONE
+        homeBinding.apply {
+            pbMain.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+            rvUsers.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
+        }
     }
 
     private fun showLottie(isLottieVisible: Boolean) {

@@ -64,6 +64,13 @@ class FollowFragment : Fragment() {
         }
     }
 
+    fun showShimmer(isLoading: Boolean) {
+        followBinding?.apply {
+            pbFollow.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+            rvFollow.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
+        }
+    }
+
     private fun showLottie(isLottieVisible: Boolean) {
         followBinding?.apply {
             lottieEmptyList.visibility = if (isLottieVisible) View.VISIBLE else View.GONE

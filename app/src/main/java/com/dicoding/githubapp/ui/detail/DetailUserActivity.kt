@@ -119,17 +119,17 @@ class DetailUserActivity : AppCompatActivity() {
         detailUserViewModel.getUserFollowers(username).observe(this@DetailUserActivity) {
             when (it) {
                 is Resource.Loading -> {
-                    showLoading(true)
+                    fragment.showShimmer(true)
                 }
                 is Resource.Success -> {
-                    showLoading(false)
+                    fragment.showShimmer(false)
                     it.data?.let { users ->
                         fragment.setErrorText(username, this)
                         fragment.setupData(users)
                     }
                 }
                 is Resource.Error -> {
-                    showLoading(false)
+                    fragment.showShimmer(false)
                     it.message.toString().showMessage(this@DetailUserActivity)
                 }
             }
@@ -140,17 +140,17 @@ class DetailUserActivity : AppCompatActivity() {
         detailUserViewModel.getUserFollowing(username).observe(this@DetailUserActivity) {
             when (it) {
                 is Resource.Loading -> {
-                    showLoading(true)
+                    fragment.showShimmer(true)
                 }
                 is Resource.Success -> {
-                    showLoading(false)
+                    fragment.showShimmer(false)
                     it.data?.let { users ->
                         fragment.setErrorText(username, this)
                         fragment.setupData(users)
                     }
                 }
                 is Resource.Error -> {
-                    showLoading(false)
+                    fragment.showShimmer(false)
                     it.message.toString().showMessage(this@DetailUserActivity)
                 }
             }
@@ -182,13 +182,13 @@ class DetailUserActivity : AppCompatActivity() {
             if (isFavorited) {
                 setImageDrawable(
                     ContextCompat.getDrawable(
-                        this@DetailUserActivity, R.drawable.ic_favorited
+                        this@DetailUserActivity, R.drawable.ic_favorite
                     )
                 )
             } else {
                 setImageDrawable(
                     ContextCompat.getDrawable(
-                        this@DetailUserActivity, R.drawable.ic_favorite
+                        this@DetailUserActivity, R.drawable.ic_unfavorite
                     )
                 )
             }

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Github Find User</string>
-    <string name="avatar_sample">Sample Avatar</string>
+    <string name="user_avatar">User Avatar</string>
     <string name="github_name">Github Name</string>
     <string name="github_username">Github Username</string>
     <string name="location">Location</string>

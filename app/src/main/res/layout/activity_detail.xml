@@ -177,7 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:contentDescription="@string/favorite"
-        android:src="@drawable/ic_favorite"
+        android:src="@drawable/ic_unfavorite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.600"
         app:layout_constraintStart_toEndOf="@id/iv_avatar"

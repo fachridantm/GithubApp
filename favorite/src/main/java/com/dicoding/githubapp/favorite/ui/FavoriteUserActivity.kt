@@ -74,8 +74,11 @@ class FavoriteUserActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(isLoadingVisible: Boolean) {
-        favoriteUserBinding.pbFav.visibility = if (isLoadingVisible) View.VISIBLE else View.GONE
+    private fun showLoading(isLoading: Boolean) {
+        favoriteUserBinding.apply {
+            pbFav.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+            rvFav.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
+        }
     }
 
     private fun showLottie(isLottieVisible: Boolean) {
