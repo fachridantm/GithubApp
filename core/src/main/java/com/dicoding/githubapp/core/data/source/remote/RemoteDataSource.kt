@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import retrofit2.HttpException
+import java.net.UnknownHostException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -36,6 +37,9 @@ class RemoteDataSource @Inject constructor(private val mainApiService: MainApiSe
                     }
                     emit(ApiResponse.Error(message))
                 }
+                is UnknownHostException -> {
+                    emit(ApiResponse.Error("No internet connection"))
+                }
                 else -> emit(ApiResponse.Error(e.message.toString()))
             }
         }
@@ -55,6 +59,9 @@ class RemoteDataSource @Inject constructor(private val mainApiService: MainApiSe
                         else -> e.getErrorMessage().toString()
                     }
                     emit(ApiResponse.Error(message))
+                }
+                is UnknownHostException -> {
+                    emit(ApiResponse.Error("No internet connection"))
                 }
                 else -> emit(ApiResponse.Error(e.message.toString()))
             }
@@ -76,6 +83,9 @@ class RemoteDataSource @Inject constructor(private val mainApiService: MainApiSe
                     }
                     emit(ApiResponse.Error(message))
                 }
+                is UnknownHostException -> {
+                    emit(ApiResponse.Error("No internet connection"))
+                }
                 else -> emit(ApiResponse.Error(e.message.toString()))
             }
         }
@@ -95,6 +105,9 @@ class RemoteDataSource @Inject constructor(private val mainApiService: MainApiSe
                         else -> e.getErrorMessage().toString()
                     }
                     emit(ApiResponse.Error(message))
+                }
+                is UnknownHostException -> {
+                    emit(ApiResponse.Error("No internet connection"))
                 }
                 else -> emit(ApiResponse.Error(e.message.toString()))
             }
