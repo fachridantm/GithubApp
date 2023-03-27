@@ -136,7 +136,7 @@ class HomeActivity : AppCompatActivity() {
                         listUserAdapter.submitList(it.data)
                         setupAdapter()
                     } else {
-                        listUserAdapter.submitList(emptyList())
+                        listUserAdapter.submitList(null)
                         showImage(true)
                         "User not found".showMessage(this)
                     }
