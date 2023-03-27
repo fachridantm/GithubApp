@@ -12,22 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubFindUser">
         <activity
-            android:name=".ui.SplashScreenActivity"
-            android:exported="true">
+            android:name=".ui.detail.DetailUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.detail.DetailUserActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.home.HomeActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false"
-            android:launchMode="singleTask" />
     </application>
 
 </manifest>

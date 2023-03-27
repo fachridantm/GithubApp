@@ -1,16 +1,21 @@
 package com.dicoding.githubapp.ui.home
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewTreeObserver
+import android.view.animation.AnticipateInterpolator
 import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog.Builder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.animation.doOnEnd
 import com.dicoding.githubapp.R
 import com.dicoding.githubapp.core.data.source.Resource
 import com.dicoding.githubapp.core.domain.model.User
@@ -35,9 +40,53 @@ class HomeActivity : AppCompatActivity() {
         homeBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(homeBinding.root)
 
+        setupSplashScreen()
+        addSplashScreenAnimation()
         searchUser()
         setupData()
-        setupTheme()
+    }
+
+    private fun addSplashScreenAnimation() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            splashScreen.setOnExitAnimationListener { splashScreenView ->
+                // Create your custom animation.
+                val slideUp = ObjectAnimator.ofFloat(
+                    splashScreenView,
+                    View.TRANSLATION_Y,
+                    0f,
+                    -splashScreenView.height.toFloat()
+                )
+                slideUp.interpolator = AnticipateInterpolator()
+                slideUp.duration = 200L
+
+                // Call SplashScreenView.remove at the end of your custom animation.
+                slideUp.doOnEnd { splashScreenView.remove() }
+
+                // Run your animation.
+                slideUp.start()
+            }
+        }
+    }
+
+    private fun setupSplashScreen() {
+        // Set up an OnPreDrawListener to the root view.
+        val content: View = findViewById(android.R.id.content)
+        content.viewTreeObserver.addOnPreDrawListener(
+            object : ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    // Check whether the initial data is ready.
+                    return if (setupTheme().run { true }) {
+                        // The content is ready. Start drawing.
+                        content.viewTreeObserver.removeOnPreDrawListener(this)
+                        true
+                    } else {
+                        // The content isn't ready. Suspend.
+                        setupTheme()
+                        false
+                    }
+                }
+            }
+        )
     }
 
     private fun searchUser() {
