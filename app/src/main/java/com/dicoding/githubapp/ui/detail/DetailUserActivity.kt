@@ -103,8 +103,8 @@ class DetailUserActivity : AppCompatActivity() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    0 -> setDataFollowers(username, fragment[0] as FollowFragment)
-                    1 -> setDataFollowing(username, fragment[1] as FollowFragment)
+                    0 -> 0.setDataFollowers(username, fragment[0] as FollowFragment)
+                    1 -> 1.setDataFollowing(username, fragment[1] as FollowFragment)
                 }
             }
 
@@ -112,11 +112,11 @@ class DetailUserActivity : AppCompatActivity() {
 
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
-        setDataFollowers(username, fragment[0] as FollowFragment)
+        0.setDataFollowers(username, fragment[0] as FollowFragment)
     }
 
-    private fun setDataFollowers(username: String, fragment: FollowFragment) {
-        detailUserViewModel.getUserFollowers(username).observe(this) {
+    private fun Int.setDataFollowers(username: String, fragment: FollowFragment) {
+        detailUserViewModel.getUserFollowers(username).observe(this@DetailUserActivity) {
             when (it) {
                 is Resource.Loading -> {
                     showLoading(true)
@@ -124,19 +124,20 @@ class DetailUserActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     showLoading(false)
                     it.data?.let { users ->
+                        fragment.setErrorText(username, this)
                         fragment.setupData(users)
                     }
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    it.message.toString().showMessage(this)
+                    it.message.toString().showMessage(this@DetailUserActivity)
                 }
             }
         }
     }
 
-    private fun setDataFollowing(username: String, fragment: FollowFragment) {
-        detailUserViewModel.getUserFollowing(username).observe(this) {
+    private fun Int.setDataFollowing(username: String, fragment: FollowFragment) {
+        detailUserViewModel.getUserFollowing(username).observe(this@DetailUserActivity) {
             when (it) {
                 is Resource.Loading -> {
                     showLoading(true)
@@ -144,12 +145,13 @@ class DetailUserActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     showLoading(false)
                     it.data?.let { users ->
+                        fragment.setErrorText(username, this)
                         fragment.setupData(users)
                     }
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    it.message.toString().showMessage(this)
+                    it.message.toString().showMessage(this@DetailUserActivity)
                 }
             }
         }

@@ -6,19 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.dicoding.githubapp.R
 import com.dicoding.githubapp.core.domain.model.User
 import com.dicoding.githubapp.core.ui.FollowAdapter
 import com.dicoding.githubapp.databinding.FragmentFollowBinding
 import com.dicoding.githubapp.ui.detail.DetailUserActivity
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class FollowFragment : Fragment() {
 
     private var position: Int = 0
 
-    private var _binding: FragmentFollowBinding? = null
-    private val binding get() = _binding
+    private var _followBinding: FragmentFollowBinding? = null
+    private val followBinding get() = _followBinding
 
     private val followAdapter: FollowAdapter by lazy { FollowAdapter(::followItemClicked) }
 
@@ -26,8 +28,8 @@ class FollowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentFollowBinding.inflate(inflater, container, false)
-        return binding?.root
+        _followBinding = FragmentFollowBinding.inflate(inflater, container, false)
+        return followBinding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,17 +38,41 @@ class FollowFragment : Fragment() {
         setupAdapter()
     }
 
+    fun setErrorText(username: String, position: Int) {
+        when (position) {
+            0 -> followBinding?.tvLottieEmptyList?.text =
+                getString(
+                    R.string.empty_list,
+                    username,
+                    getString(R.string.followers).lowercase(Locale.getDefault())
+                )
+            1 -> followBinding?.tvLottieEmptyList?.text =
+                getString(
+                    R.string.empty_list,
+                    username,
+                    getString(R.string.following).lowercase(Locale.getDefault())
+                )
+        }
+    }
+
     fun setupData(user: List<User>) {
         if (user.isNotEmpty()) {
             followAdapter.submitList(user)
-            binding?.tvEmpty?.visibility = View.GONE
+            showLottie(false)
         } else {
-            binding?.tvEmpty?.visibility = View.VISIBLE
+            showLottie(true)
+        }
+    }
+
+    private fun showLottie(isLottieVisible: Boolean) {
+        followBinding?.apply {
+            lottieEmptyList.visibility = if (isLottieVisible) View.VISIBLE else View.GONE
+            tvLottieEmptyList.visibility = if (isLottieVisible) View.VISIBLE else View.GONE
         }
     }
 
     private fun setupAdapter() {
-        binding?.rvFollow?.apply {
+        followBinding?.rvFollow?.apply {
             setHasFixedSize(true)
             adapter = followAdapter
         }

@@ -58,9 +58,9 @@ class FavoriteUserActivity : AppCompatActivity() {
             showLoading(true)
             if (!it.isNullOrEmpty()) {
                 showLoading(false)
-                showImage(false)
+                showLottie(false)
             } else {
-                showImage(true)
+                showLottie(true)
                 showLoading(false)
             }
             favoriteAdapter.submitList(it)
@@ -78,11 +78,12 @@ class FavoriteUserActivity : AppCompatActivity() {
         favoriteUserBinding.pbFav.visibility = if (isLoadingVisible) View.VISIBLE else View.GONE
     }
 
-    private fun showImage(isImageVisible: Boolean) {
-        favoriteUserBinding.ivDoodleFav.visibility =
-            if (isImageVisible) View.VISIBLE else View.INVISIBLE
-        favoriteUserBinding.tvDoodleFav.visibility =
-            if (isImageVisible) View.VISIBLE else View.INVISIBLE
+    private fun showLottie(isLottieVisible: Boolean) {
+        favoriteUserBinding.apply {
+            lottieNoFavoriteUser.visibility = if (isLottieVisible) View.VISIBLE else View.INVISIBLE
+            tvLottieNoFavoriteUser.visibility =
+                if (isLottieVisible) View.VISIBLE else View.INVISIBLE
+        }
     }
 
     private fun favoriteItemClicked(user: User) {

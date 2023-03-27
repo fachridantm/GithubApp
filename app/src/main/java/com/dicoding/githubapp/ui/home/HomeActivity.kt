@@ -99,10 +99,10 @@ class HomeActivity : AppCompatActivity() {
                     val getData = homeViewModel.searchUser(userQuery)
 
                     if (userQuery.isEmpty() || getData.equals(null)) {
-                        showImage(true)
+                        showLottie(true)
                         listUserAdapter.submitList(null)
                     } else {
-                        showImage(false)
+                        showLottie(false)
                     }
 
                     return true
@@ -111,10 +111,10 @@ class HomeActivity : AppCompatActivity() {
                 override fun onQueryTextChange(newText: String?): Boolean {
                     userQuery = newText.toString()
                     if (userQuery.isEmpty()) {
-                        showImage(true)
+                        showLottie(true)
                         listUserAdapter.submitList(null)
                     } else {
-                        showImage(false)
+                        showLottie(false)
                     }
                     return true
                 }
@@ -127,23 +127,23 @@ class HomeActivity : AppCompatActivity() {
             when (it) {
                 is Resource.Loading -> {
                     showLoading(true)
-                    showImage(false)
+                    showLottie(false)
                 }
                 is Resource.Success -> {
                     showLoading(false)
-                    showImage(false)
+                    showLottie(false)
                     if (!it.data.isNullOrEmpty()) {
                         listUserAdapter.submitList(it.data)
                         setupAdapter()
                     } else {
                         listUserAdapter.submitList(null)
-                        showImage(true)
+                        showLottie(true)
                         "User not found".showMessage(this)
                     }
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    showImage(true)
+                    showLottie(true)
                     it.message.toString().showMessage(this)
                 }
             }
@@ -154,9 +154,12 @@ class HomeActivity : AppCompatActivity() {
         homeBinding.pbMain.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    private fun showImage(isImageVisible: Boolean) {
-        homeBinding.ivDoodleFind.visibility = if (isImageVisible) View.VISIBLE else View.INVISIBLE
-        homeBinding.tvDoodleFind.visibility = if (isImageVisible) View.VISIBLE else View.INVISIBLE
+    private fun showLottie(isLottieVisible: Boolean) {
+        homeBinding.apply {
+            lottieNoSearchResult.visibility = if (isLottieVisible) View.VISIBLE else View.INVISIBLE
+            tvLottieNoSearchResult.visibility =
+                if (isLottieVisible) View.VISIBLE else View.INVISIBLE
+        }
     }
 
     private fun setupAdapter() {

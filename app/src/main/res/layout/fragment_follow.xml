@@ -12,15 +12,32 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_row_user" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_empty_list"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:contentDescription="@string/empty_list"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/tv_lottie_empty_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="emptybox.json"
+        app:lottie_loop="true"
+        tools:visibility="invisible" />
+
     <TextView
-        android:id="@+id/tv_empty"
+        android:id="@+id/tv_lottie_empty_list"
         style="@style/TextStyle.SUBTITLE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/empty_list"
+        android:layout_marginTop="16dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/lottie_empty_list"
+        app:layout_constraintVertical_chainStyle="packed" />
 </androidx.constraintlayout.widget.ConstraintLayout>
