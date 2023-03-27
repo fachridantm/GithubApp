@@ -57,7 +57,7 @@ class HomeActivity : AppCompatActivity() {
                     -splashScreenView.height.toFloat()
                 )
                 slideUp.interpolator = AnticipateInterpolator()
-                slideUp.duration = 200L
+                slideUp.duration = 500L
 
                 // Call SplashScreenView.remove at the end of your custom animation.
                 slideUp.doOnEnd { splashScreenView.remove() }
