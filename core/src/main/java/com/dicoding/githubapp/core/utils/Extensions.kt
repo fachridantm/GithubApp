@@ -6,10 +6,10 @@ import android.os.Build.VERSION.SDK_INT
 import android.os.Parcelable
 import android.widget.ImageView
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.githubapp.core.R
+import com.dicoding.githubapp.core.di.GlideApp
 import org.json.JSONObject
 import retrofit2.HttpException
 
@@ -31,7 +31,7 @@ fun HttpException.getErrorMessage(): String? {
 
 fun ImageView.loadUserImage(url: String) {
     try {
-        Glide.with(this.context)
+        GlideApp.with(this.context)
             .load(url)
             .apply(
                 RequestOptions().override(100, 100)
