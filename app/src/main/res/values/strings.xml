@@ -13,12 +13,11 @@
     <string name="repository">Repository</string>
     <string name="company">Company</string>
     <string name="title_detail">Detail User</string>
-    <string name="github_logo">Github Logo</string>
     <string name="share">Share</string>
     <string name="favorite">Favorite</string>
     <string name="settings">Settings</string>
     <string name="title_favorite">Favorite User</string>
-    \<string name="empty_list">%s doesn\'t have any %s user:(</string>
+    <string name="empty_list">%s doesn\'t have any %s user:(</string>
     <string name="add_favorite">Add %s to favorite</string>
     <string name="remove_favorite">Remove %s from favorite</string>
     <string name="share_button">Follow %s on github! \n%s</string>
