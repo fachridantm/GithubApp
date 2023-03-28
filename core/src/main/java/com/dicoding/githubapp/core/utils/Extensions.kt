@@ -10,6 +10,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.githubapp.core.R
 import com.dicoding.githubapp.core.di.GlideApp
+import com.dicoding.githubapp.core.di.GlideOptions
 import org.json.JSONObject
 import retrofit2.HttpException
 
@@ -34,7 +35,7 @@ fun ImageView.loadUserImage(url: String) {
         GlideApp.with(this.context)
             .load(url)
             .apply(
-                RequestOptions().override(100, 100)
+                GlideOptions().override(100, 100)
                     .circleCrop()
                     .placeholder(R.drawable.ic_loading)
                     .error(R.drawable.ic_error)
