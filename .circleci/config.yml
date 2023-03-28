@@ -23,6 +23,9 @@ jobs:
           name: Add GITHUB_TOKEN to local.properties
           command: echo "GITHUB_TOKEN=${GITHUB_TOKEN}" >> local.properties
       - run:
+          name: Add HOSTNAME to local.properties
+          command: echo "HOSTNAME=${HOSTNAME}" >> local.properties
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
