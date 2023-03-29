@@ -47,7 +47,7 @@ dependencies {
 
     // Lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 
     // Dagger hilt
     implementation 'com.google.dagger:hilt-android:2.45'
@@ -62,4 +62,7 @@ dependencies {
     // SQL Chiper
     implementation "net.zetetic:android-database-sqlcipher:4.4.0"
     implementation "androidx.sqlite:sqlite-ktx:2.3.1"
+
+    // Leak Canary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 }
