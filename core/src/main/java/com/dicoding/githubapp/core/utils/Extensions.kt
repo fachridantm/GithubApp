@@ -7,7 +7,6 @@ import android.os.Parcelable
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestOptions
 import com.dicoding.githubapp.core.R
 import com.dicoding.githubapp.core.di.GlideApp
 import com.dicoding.githubapp.core.di.GlideOptions
