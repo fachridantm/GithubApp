@@ -19,8 +19,8 @@ class NetworkModule {
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         val certificatePinner = CertificatePinner.Builder()
-            .add(HOSTNAME, "sha256/1UPHAdcUbUoOcd5rDTD/0oMSnngCU6YzXzpByO4CCp4=")
-            .add(HOSTNAME, "sha256/Jg78dOE+fydIGk19swWwiypUSR6HWZybfnJG/8G7pyM=")
+            .add(HOSTNAME, CERTIFICATE_PINNER_1)
+            .add(HOSTNAME, CERTIFICATE_PINNER_2)
             .build()
         return OkHttpClient.Builder()
             .addInterceptor(
