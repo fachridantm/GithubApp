@@ -26,6 +26,15 @@ jobs:
           name: Add HOSTNAME to local.properties
           command: echo "HOSTNAME=${HOSTNAME}" >> local.properties
       - run:
+          name: Add PASSPHRASE to local.properties
+          command: echo "PASSPHRASE=${PASSPHRASE}" >> local.properties
+      - run:
+          name: Add CERTIFICATE PINNER 1 to local.properties
+          command: echo "CERTIFICATE_PINNER_1=${CERTIFICATE_PINNER_1}" >> local.properties
+      - run:
+          name: Add CERTIFICATE PINNER 2 to local.properties
+          command: echo "CERTIFICATE_PINNER_2=${CERTIFICATE_PINNER_2}" >> local.properties
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
