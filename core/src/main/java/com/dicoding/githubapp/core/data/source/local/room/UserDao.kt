@@ -10,11 +10,11 @@ interface UserDao {
     fun getFavoritedUsers(): Flow<List<UserEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertUser(user: UserEntity)
+    suspend fun insertUser(user: UserEntity)
 
     @Delete
-    fun deleteUser(user: UserEntity)
+    suspend fun deleteUser(user: UserEntity)
 
     @Update
-    fun updateUser(user: UserEntity)
+    suspend fun updateUser(user: UserEntity)
 }

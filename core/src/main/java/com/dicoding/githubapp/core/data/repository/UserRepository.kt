@@ -6,7 +6,6 @@ import com.dicoding.githubapp.core.data.source.remote.RemoteDataSource
 import com.dicoding.githubapp.core.data.source.remote.network.ApiResponse
 import com.dicoding.githubapp.core.domain.model.User
 import com.dicoding.githubapp.core.domain.repository.IUserRepository
-import com.dicoding.githubapp.core.utils.AppExecutors
 import com.dicoding.githubapp.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -19,7 +18,6 @@ import javax.inject.Singleton
 class UserRepository @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource,
-    private val appExecutors: AppExecutors,
 ) : IUserRepository {
     override fun searchUser(query: String): Flow<Resource<List<User>>> = flow {
         emit(Resource.Loading())
@@ -88,7 +86,7 @@ class UserRepository @Inject constructor(
 
     override suspend fun setFavoriteUsers(user: User, state: Boolean) {
         val userEntity = DataMapper.usertoUserEntity(user)
-        appExecutors.diskIO().execute { localDataSource.setFavoriteUsers(userEntity, state) }
+        localDataSource.setFavoriteUsers(userEntity, state)
     }
 
     override fun getThemeSetting(): Flow<Boolean> = localDataSource.getThemeSetting()
