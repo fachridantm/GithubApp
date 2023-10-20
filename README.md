@@ -1,13 +1,9 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/fachridantm/GithubApp/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/fachridantm/GithubApp)
 
-# Dicoding-AndroidExpert
+# GithubFavoriteApps
 
-Repository for
-Documentations [Dicoding - Menjadi Android Developer Expert](https://www.dicoding.com/academies/165)
-
-## Purpose
-
-Record Project Menjadi Android Developer Expert from [Dicoding Indonesia](https://www.dicoding.com/)
+A simple application to search github users and add them to favorites
+using [Github API](https://docs.github.com/en/rest).
 
 ## Screenshots
 
@@ -43,5 +39,4 @@ Record Project Menjadi Android Developer Expert from [Dicoding Indonesia](https:
 - [Leak Canary](https://square.github.io/leakcanary/)
 
 ## Author
-
 * #### Fachridan Tio Mu'afa
