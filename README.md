@@ -9,6 +9,10 @@ Documentations [Dicoding - Menjadi Android Developer Expert](https://www.dicodin
 
 Record Project Menjadi Android Developer Expert from [Dicoding Indonesia](https://www.dicoding.com/)
 
+## Screenshots
+
+![GithubApp](https://raw.githubusercontent.com/fachridantm/GithubApp/master/app/screenshots/Github-Favorite-Apps.png)
+
 ## Tech Stack
 
 - [Kotlin](https://kotlinlang.org/)
