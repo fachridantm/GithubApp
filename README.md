@@ -28,7 +28,7 @@ using [Github API](https://docs.github.com/en/rest).
 - [Retrofit](https://square.github.io/retrofit/)
 - [OkHttp](https://square.github.io/okhttp/)
 - [Room](https://developer.android.com/training/data-storage/room)
-- [Paging](https://developer.android.com/topic/libraries/architecture/paging)
+- [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
 - [Glide](https://github.com/bumptech/glide)
 - [Lottie](https://airbnb.design/lottie/)
 - [Shimmer](https://facebook.github.io/shimmer-android/)
