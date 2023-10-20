@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       - image: openjdk:17
-    executor: android/android-machine
+    executor: android/android
     steps:
       - checkout
       - restore_cache:
