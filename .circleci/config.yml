@@ -20,7 +20,7 @@ jobs:
           command: touch local.properties
       - run:
           name: Add sdk.dir to local.properties
-          command: echo "sdk.dir=${CIRCLE_WORKING_DIRECTORY/local.properties}" >> local.properties
+          command: echo "sdk.dir=/root/project/local.properties" >> local.properties
       - run:
           name: Add BASE_URL to local.properties
           command: echo "BASE_URL=${BASE_URL}" >> local.properties
