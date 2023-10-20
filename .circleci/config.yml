@@ -20,7 +20,7 @@ jobs:
           command: touch local.properties
       - run:
           name: Add sdk.dir to local.properties
-          command: echo "sdk.dir='${ANDROID_HOME}'" >> local.properties
+          command: echo "sdk.dir=${ANDROID_HOME}" >> local.properties
       - run:
           name: Add BASE_URL to local.properties
           command: echo "BASE_URL=${BASE_URL}" >> local.properties
