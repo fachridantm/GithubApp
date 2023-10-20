@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:17.0-jdk
+      - image: adoptopenjdk:17-jdk-hotspot
     executor: android/android
     steps:
       - checkout
