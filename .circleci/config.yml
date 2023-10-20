@@ -5,6 +5,8 @@ orbs:
 
 jobs:
   build:
+    docker:
+      - image: circleci/openjdk:17.0-jdk
     executor: android/android
     steps:
       - checkout
