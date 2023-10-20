@@ -1,8 +1,8 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 dependencyResolutionManagement {
@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "GithubApp"
-include ':app'
-include ':core'
-include ':favorite'
+include(":app")
+include(":core")
+include(":favorite")
