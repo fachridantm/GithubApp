@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: adoptopenjdk:17-jdk-hotspot
+      - image: openjdk:17
     executor: android/android
     steps:
       - checkout
