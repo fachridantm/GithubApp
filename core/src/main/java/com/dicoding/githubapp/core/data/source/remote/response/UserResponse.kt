@@ -1,12 +1,14 @@
 package com.dicoding.githubapp.core.data.source.remote.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class UserResponse(
 
-    @field:SerializedName("total_count")
+    @SerializedName("total_count")
     val amount: Int? = 0,
 
-    @field:SerializedName("items")
+    @SerializedName("items")
     val items: List<UserItem>? = null
 )

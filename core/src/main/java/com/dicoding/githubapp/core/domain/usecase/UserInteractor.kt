@@ -13,7 +13,7 @@ class UserInteractor @Inject constructor(
     override fun searchUser(query: String): Flow<Resource<List<User>>> =
         userRepository.searchUser(query)
 
-    override fun getDetailUser(username: String?): Flow<Resource<User>> =
+    override fun getDetailUser(username: String): Flow<Resource<User>> =
         userRepository.getDetailUser(username)
 
     override fun getUserFollowers(username: String): Flow<Resource<List<User>>> =

@@ -38,16 +38,18 @@ class UserRepository @Inject constructor(
         }
     }
 
-    override fun getDetailUser(username: String?): Flow<Resource<User>> = flow {
+    override fun getDetailUser(username: String): Flow<Resource<User>> = flow {
         emit(Resource.Loading())
         when (val response = remoteDataSource.getDetailUser(username).first()) {
             is ApiResponse.Success -> {
                 val user = DataMapper.userResponseToUser(response.data)
                 emit(Resource.Success(user))
             }
+
             is ApiResponse.Error -> {
                 emit(Resource.Error(response.errorMessage))
             }
+
             is ApiResponse.Empty -> {}
         }
     }

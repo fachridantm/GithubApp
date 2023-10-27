@@ -1,7 +1,11 @@
 package com.dicoding.githubapp.ui.detail
 
 import android.content.Context
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.dicoding.githubapp.R
 import com.dicoding.githubapp.core.domain.model.User
 import com.dicoding.githubapp.core.domain.usecase.UserUseCase
@@ -30,7 +34,7 @@ class DetailUserViewModel @Inject constructor(private val userUseCase: UserUseCa
 
     fun getFavoritedUsers() = userUseCase.getFavoritedUsers().asLiveData()
 
-    fun getDetailUser(username: String?) = userUseCase.getDetailUser(username).asLiveData()
+    fun getDetailUser(username: String) = userUseCase.getDetailUser(username).asLiveData()
 
     fun getUserFollowers(username: String) = userUseCase.getUserFollowers(username).asLiveData()
 

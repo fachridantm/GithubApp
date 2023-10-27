@@ -17,18 +17,18 @@ interface MainApiService {
     @GET("users/{username}")
     suspend fun getDetailUser(
         @Path("username")
-        username: String?,
+        username: String,
     ): UserItem
 
     @GET("users/{username}/followers")
     suspend fun getUserFollowers(
         @Path("username")
-        username: String?,
+        username: String,
     ): ArrayList<FollowItem>
 
     @GET("users/{username}/following")
     suspend fun getUserFollowing(
         @Path("username")
-        username: String?,
+        username: String,
     ): ArrayList<FollowItem>
 }

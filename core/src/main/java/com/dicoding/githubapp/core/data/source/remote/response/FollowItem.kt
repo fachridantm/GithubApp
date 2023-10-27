@@ -1,21 +1,23 @@
 package com.dicoding.githubapp.core.data.source.remote.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class FollowItem(
 
-    @field:SerializedName("following_url")
+    @SerializedName("following_url")
     val followingUrl: String,
 
-    @field:SerializedName("login")
+    @SerializedName("login")
     val username: String,
 
-    @field:SerializedName("followers_url")
+    @SerializedName("followers_url")
     val followersUrl: String,
 
-    @field:SerializedName("avatar_url")
+    @SerializedName("avatar_url")
     val avatar: String,
 
-    @field:SerializedName("html_url")
+    @SerializedName("html_url")
     val url: String,
 )
