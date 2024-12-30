@@ -50,4 +50,8 @@ android {
 
 dependencies {
     implementation(fileTree("libs") { include("*.jar") })
+
+    // Chucker Interceptor
+    debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
 }
