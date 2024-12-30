@@ -1,6 +1,6 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/fachridantm/GithubApp/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/fachridantm/GithubApp)
 
-# GithubFavoriteApps
+# GithubApp
 
 A simple application to search github users and add them to favorites
 using [Github API](https://docs.github.com/en/rest).
